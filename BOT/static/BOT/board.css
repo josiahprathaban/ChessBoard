@@ -1,0 +1,58 @@
+.board{
+    max-width: 90vh;
+    margin: auto;
+    padding: 10px;
+    display: none;
+}
+
+.r{
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto auto auto auto;
+}
+.selected{
+  outline: 2px solid rgb(119, 63, 30);
+    outline-offset: -2px;
+}
+
+.can_move{
+  outline: 4px solid rgba(119, 63, 30, 0.3);
+  outline-offset: -4px;
+}
+
+.can_move:hover{
+  outline: 4px solid rgba(119, 63, 30, 0.6);
+  outline-offset: -4px;
+}
+
+.from{
+  outline: 2px solid rgba(233, 195, 164, 0.377);
+  outline-offset: -20px;
+  
+}
+
+.to{
+  outline: 2px solid rgba(233, 195, 164, 0.377);
+  outline-offset: -5px;
+}
+
+.can_kill{
+  outline: 4px solid rgba(163, 75, 49, 0.7);
+  outline-offset: -4px;
+}
+
+.can_kill:hover{
+  outline: 4px solid rgba(163, 75, 49, 0.9);
+  outline-offset: -4px;
+}
+
+.check{
+  outline: 6px solid rgba(200, 55, 11, 0.7);
+  outline-offset: -6px;
+}
+.clickable:hover{
+    outline: 2px solid rgba(119, 63, 30, 0.4);
+    outline-offset: 2px;
+}
+#load{
+    display: none;
+}

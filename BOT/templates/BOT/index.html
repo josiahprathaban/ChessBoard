@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChessBoard - Welcome</title>
+    <link href="{% static 'BOT/index.css' %}" rel="stylesheet">
+    <link href="{% static 'BOT/lib/bootstrap-5.0.0/css/bootstrap.min.css'%}" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <script src="{% static 'BOT/lib/bootstrap-5.0.0/js/bootstrap.bundle.min.js'%}" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <script src="{% static 'BOT/lib/jquery-3.5.1/jquery-3.5.1.min.js'%}"></script>
+    <script src="{% static 'BOT/index.js'%}"></script>
+</head>
+<body>
+    <div id="loader" class="position-absolute top-50 start-50 translate-middle"><img src="{% static 'BOT/assets/images/loading.jpg'%}" alt="Loading..."></div>
+    <div class="container-fluid" id="load">
+        <div class="card p-4 position-absolute top-50 start-50 translate-middle">
+            <div class="row text-center">
+                <div class="col-md-4 d-flex align-items-center">
+                    <img src="{% static 'BOT/assets/images/logo.jpg'%}" alt="Horse">
+                </div>
+                <div class="col-md-8">
+                    <div id="Welcome"><span class="fs-4 fw-light">Welcome to</span> <span class="fs-2">ChessBoard</span></div>
+                    <div class="fs-6 fw-lighter" id="Welcome_para">Are you exited to play chess with JO-BOT.<br/>Let's play.</div>
+                    <form action="{% url 'BOT:board'%}" method="post">
+                        {% csrf_token %}
+                        <div class="m-3" id="player_name"><input class="form-control form-control-sm" type="text" placeholder="Name" name="name"></div>
+                        <div class="m-3" id="level">
+                            <select class="form-select form-select-sm" aria-label="Default select example" name="level">
+                                <option value="1">Easy</option>
+                                <option value="2" selected>Medium</option>
+                                <option value="3">Hard</option>
+                            </select>
+                        </div>
+                        <small><div class="btn-group mb-1" role="group" aria-label="Basic radio toggle button group">
+                            <input type="radio" class="btn-check" name="color" id="white" autocomplete="off" checked value="w">
+                            <label class="btn btn-outline-dark btn-sm" for="white">White</label>
+
+                            <input type="radio" class="btn-check" name="color" id="black" autocomplete="off" value="b">
+                            <label class="btn btn-outline-dark btn-sm" for="black">Black</label>
+                          </div></small>
+                        <small><div class="form-check form-check-inline form-switch m-1 ms-md-4" id="clock">
+                            <input class="form-check-input me-2" type="checkbox" value="" id="flexCheckDefault" name="clock">
+                            <label class="form-check-label" for="flexCheckDefault">Play with Clock</label>
+                        </div><br/></small>
+                        <button type="submit" class="btn btn-dark m-md-3">Play Now</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="{% static 'BOT/index.js' %}"></script>
+</html>

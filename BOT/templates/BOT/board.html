@@ -1,0 +1,342 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChessBoard</title>
+    <link href="{% static 'BOT/board.css' %}" rel="stylesheet">
+    <link href="{% static 'BOT/lib/bootstrap-5.0.0/css/bootstrap.min.css' %}" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <script src="{% static 'BOT/lib/bootstrap-5.0.0/js/bootstrap.bundle.min.js' %}" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <script src="{% static 'BOT/lib/jquery-3.5.1/jquery-3.5.1.min.js' %}"></script>
+    <script src="{% static 'BOT/board.js' %}"></script>
+    <style>
+        .black-box {
+            background-image: url("{% static 'BOT/assets/images/backb.png' %}");
+            background-size: cover;
+          }
+
+        .white-box {
+            background-image: url("{% static 'BOT/assets/images/backw.png' %}");
+            background-size: cover;
+          }
+
+    </style>
+</head>
+<body>
+<div id="loader" class="position-absolute top-50 start-50 translate-middle"><img src="{% static 'BOT/assets/images/loading.jpg'%}" alt="Loading..."></div>
+    <div class="board">
+        {% if color == "w" %}
+        <div class="player-white">
+            <div class="r">
+                <div class="col p-1 "><img width="100%" src="{% static 'BOT/assets/images/letters/8.png' %}"/></div>
+                <div class="col p-1 white-box " id="a8"><img width="100%" src="{% static 'BOT/assets/images/brown/rb-1.png' %}" id="br1" class="clickable"/></div>
+                <div class="col p-1 black-box" id="b8"><img width="100%" src="{% static 'BOT/assets/images/brown/hb-1.png' %}" id="bh1" class="clickable"/></div>
+                <div class="col p-1 white-box" id="c8"><img width="100%" src="{% static 'BOT/assets/images/brown/bb-1.png' %}" id="bb1" class="clickable"/></div>
+                <div class="col p-1 black-box" id="d8"><img width="100%" src="{% static 'BOT/assets/images/brown/qb.png' %}" id="bq" class="clickable"/></div>
+                <div class="col p-1 white-box" id="e8"><img width="100%" src="{% static 'BOT/assets/images/brown/kb.png' %}" id="bk" class="clickable"/></div>
+                <div class="col p-1 black-box" id="f8"><img width="100%" src="{% static 'BOT/assets/images/brown/bb-2.png' %}" id="bb2" class="clickable"/></div>
+                <div class="col p-1 white-box" id="g8"><img width="100%" src="{% static 'BOT/assets/images/brown/hb-2.png' %}" id="bh2" class="clickable"/></div>
+                <div class="col p-1 black-box" id="h8"><img width="100%" src="{% static 'BOT/assets/images/brown/rb-2.png' %}" id="br2" class="clickable"/></div>
+
+                <div class="col p-1 "><img width="100%" src="{% static 'BOT/assets/images/letters/7.png' %}"/></div>
+                <div class="col p-1 black-box" id="a7"><img width="100%" src="{% static 'BOT/assets/images/brown/pb.png' %}" id="bp1" class="clickable"/></div>
+                <div class="col p-1 white-box" id="b7"><img width="100%" src="{% static 'BOT/assets/images/brown/pb.png' %}" id="bp2" class="clickable"/></div>
+                <div class="col p-1 black-box" id="c7"><img width="100%" src="{% static 'BOT/assets/images/brown/pb.png' %}" id="bp3" class="clickable"/></div>
+                <div class="col p-1 white-box" id="d7"><img width="100%" src="{% static 'BOT/assets/images/brown/pb.png' %}" id="bp4" class="clickable"/></div>
+                <div class="col p-1 black-box" id="e7"><img width="100%" src="{% static 'BOT/assets/images/brown/pb.png' %}" id="bp5" class="clickable"/></div>
+                <div class="col p-1 white-box" id="f7"><img width="100%" src="{% static 'BOT/assets/images/brown/pb.png' %}" id="bp6" class="clickable"/></div>
+                <div class="col p-1 black-box" id="g7"><img width="100%" src="{% static 'BOT/assets/images/brown/pb.png' %}" id="bp7" class="clickable"/></div>
+                <div class="col p-1 white-box" id="h7"><img width="100%" src="{% static 'BOT/assets/images/brown/pb.png' %}" id="bp8" class="clickable"/></div>
+
+                <div class="col p-1 "><img width="100%" src="{% static 'BOT/assets/images/letters/6.png' %}"/></div>
+                <div class="col p-1 white-box available" id="a6"> </div>
+                <div class="col p-1 black-box available" id="b6"> </div>
+                <div class="col p-1 white-box available" id="c6"> </div>
+                <div class="col p-1 black-box available" id="d6"> </div>
+                <div class="col p-1 white-box available" id="e6"> </div>
+                <div class="col p-1 black-box available" id="f6"> </div>
+                <div class="col p-1 white-box available" id="g6"> </div>
+                <div class="col p-1 black-box available" id="h6"> </div>
+
+                <div class="col p-1 "><img width="100%" src="{% static 'BOT/assets/images/letters/5.png' %}"/></div>
+                <div class="col p-1 black-box available" id="a5"> </div>
+                <div class="col p-1 white-box available" id="b5"> </div>
+                <div class="col p-1 black-box available" id="c5"> </div>
+                <div class="col p-1 white-box available" id="d5"> </div>
+                <div class="col p-1 black-box available" id="e5"> </div>
+                <div class="col p-1 white-box available" id="f5"> </div>
+                <div class="col p-1 black-box available" id="g5"> </div>
+                <div class="col p-1 white-box available" id="h5"> </div>
+
+                <div class="col p-1 "><img width="100%" src="{% static 'BOT/assets/images/letters/4.png' %}"/></div>
+                <div class="col p-1 white-box available" id="a4"> </div>
+                <div class="col p-1 black-box available" id="b4"> </div>
+                <div class="col p-1 white-box available" id="c4"> </div>
+                <div class="col p-1 black-box available" id="d4"> </div>
+                <div class="col p-1 white-box available" id="e4"> </div>
+                <div class="col p-1 black-box available" id="f4"> </div>
+                <div class="col p-1 white-box available" id="g4"> </div>
+                <div class="col p-1 black-box available" id="h4"> </div>
+
+                <div class="col p-1 "><img width="100%" src="{% static 'BOT/assets/images/letters/3.png' %}"/></div>
+                <div class="col p-1 black-box available" id="a3"> </div>
+                <div class="col p-1 white-box available" id="b3"> </div>
+                <div class="col p-1 black-box available" id="c3"> </div>
+                <div class="col p-1 white-box available" id="d3"> </div>
+                <div class="col p-1 black-box available" id="e3"> </div>
+                <div class="col p-1 white-box available" id="f3"> </div>
+                <div class="col p-1 black-box available" id="g3"> </div>
+                <div class="col p-1 white-box available" id="h3"> </div>
+
+                <div class="col p-1 "><img width="100%" src="{% static 'BOT/assets/images/letters/2.png' %}"/></div>
+                <div class="col p-1 white-box" id="a2"><img width="100%" src="{% static 'BOT/assets/images/white/pw.png' %}" id="wp1"/></div>
+                <div class="col p-1 black-box" id="b2"><img width="100%" src="{% static 'BOT/assets/images/white/pw.png' %}" id="wp2"/></div>
+                <div class="col p-1 white-box" id="c2"><img width="100%" src="{% static 'BOT/assets/images/white/pw.png' %}" id="wp3"/></div>
+                <div class="col p-1 black-box" id="d2"><img width="100%" src="{% static 'BOT/assets/images/white/pw.png' %}" id="wp4"/></div>
+                <div class="col p-1 white-box" id="e2"><img width="100%" src="{% static 'BOT/assets/images/white/pw.png' %}" id="wp5"/></div>
+                <div class="col p-1 black-box" id="f2"><img width="100%" src="{% static 'BOT/assets/images/white/pw.png' %}" id="wp6"/></div>
+                <div class="col p-1 white-box" id="g2"><img width="100%" src="{% static 'BOT/assets/images/white/pw.png' %}" id="wp7"/></div>
+                <div class="col p-1 black-box" id="h2"><img width="100%" src="{% static 'BOT/assets/images/white/pw.png' %}" id="wp8"/></div>
+
+                <div class="col p-1 "><img width="100%" src="{% static 'BOT/assets/images/letters/1.png' %}"/></div>
+                <div class="col p-1 black-box" id="a1"><img width="100%" src="{% static 'BOT/assets/images/white/rw-1.png' %}" id="wr1"/></div>
+                <div class="col p-1 white-box" id="b1"><img width="100%" src="{% static 'BOT/assets/images/white/hw-1.png' %}" id="wh1"/></div>
+                <div class="col p-1 black-box" id="c1"><img width="100%" src="{% static 'BOT/assets/images/white/bw-1.png' %}" id="wb1"/></div>
+                <div class="col p-1 white-box" id="d1"><img width="100%" src="{% static 'BOT/assets/images/white/qw.png' %}" id="wq"/></div>
+                <div class="col p-1 black-box" id="e1"><img width="100%" src="{% static 'BOT/assets/images/white/kw.png' %}" id="wk"/></div>
+                <div class="col p-1 white-box" id="f1"><img width="100%" src="{% static 'BOT/assets/images/white/bw-2.png' %}" id="wb2"/></div>
+                <div class="col p-1 black-box" id="g1"><img width="100%" src="{% static 'BOT/assets/images/white/hw-2.png' %}" id="wh2"/></div>
+                <div class="col p-1 white-box" id="h1"><img width="100%" src="{% static 'BOT/assets/images/white/rw-2.png' %}" id="wr2"/></div>
+
+                <div></div>
+                <div class="col p-1 "><img width="100%" src="{% static 'BOT/assets/images/letters/a.png' %}"/></div>
+                <div class="col p-1 "><img width="100%" src="{% static 'BOT/assets/images/letters/b.png' %}"/></div>
+                <div class="col p-1 "><img width="100%" src="{% static 'BOT/assets/images/letters/c.png' %}"/></div>
+                <div class="col p-1 "><img width="100%" src="{% static 'BOT/assets/images/letters/d.png' %}"/></div>
+                <div class="col p-1 "><img width="100%" src="{% static 'BOT/assets/images/letters/e.png' %}"/></div>
+                <div class="col p-1 "><img width="100%" src="{% static 'BOT/assets/images/letters/f.png' %}"/></div>
+                <div class="col p-1 "><img width="100%" src="{% static 'BOT/assets/images/letters/g.png' %}"/></div>
+                <div class="col p-1 "><img width="100%" src="{% static 'BOT/assets/images/letters/h.png' %}"/></div>
+            </div>
+        </div>
+        {% endif %}
+        {% if color == "b" %}
+        <div class="player-black">
+            <div class="r">
+
+                <div class="col p-1 "><img width="100%" src="{% static 'BOT/assets/images/letters/1.png' %}"/></div>
+                <div class="col p-1 black-box" id="a1"><img width="100%" src="{% static 'BOT/assets/images/white/rw-1.png' %}" id="wr1"/></div>
+                <div class="col p-1 white-box" id="b1"><img width="100%" src="{% static 'BOT/assets/images/white/hw-1.png' %}" id="wh1"/></div>
+                <div class="col p-1 black-box" id="c1"><img width="100%" src="{% static 'BOT/assets/images/white/bw-1.png' %}" id="wb1"/></div>
+                <div class="col p-1 white-box" id="d1"><img width="100%" src="{% static 'BOT/assets/images/white/qw.png' %}" id="wq"/></div>
+                <div class="col p-1 black-box" id="e1"><img width="100%" src="{% static 'BOT/assets/images/white/kw.png' %}" id="wk"/></div>
+                <div class="col p-1 white-box" id="f1"><img width="100%" src="{% static 'BOT/assets/images/white/bw-2.png' %}" id="wb2"/></div>
+                <div class="col p-1 black-box" id="g1"><img width="100%" src="{% static 'BOT/assets/images/white/hw-2.png' %}" id="wh2"/></div>
+                <div class="col p-1 white-box" id="h1"><img width="100%" src="{% static 'BOT/assets/images/white/rw-2.png' %}" id="wr2"/></div>
+
+                <div class="col p-1 "><img width="100%" src="{% static 'BOT/assets/images/letters/2.png' %}"/></div>
+                <div class="col p-1 white-box" id="a2"><img width="100%" src="{% static 'BOT/assets/images/white/pw.png' %}" id="wp1"/></div>
+                <div class="col p-1 black-box" id="b2"><img width="100%" src="{% static 'BOT/assets/images/white/pw.png' %}" id="wp2"/></div>
+                <div class="col p-1 white-box" id="c2"><img width="100%" src="{% static 'BOT/assets/images/white/pw.png' %}" id="wp3"/></div>
+                <div class="col p-1 black-box" id="d2"><img width="100%" src="{% static 'BOT/assets/images/white/pw.png' %}" id="wp4"/></div>
+                <div class="col p-1 white-box" id="e2"><img width="100%" src="{% static 'BOT/assets/images/white/pw.png' %}" id="wp5"/></div>
+                <div class="col p-1 black-box" id="f2"><img width="100%" src="{% static 'BOT/assets/images/white/pw.png' %}" id="wp6"/></div>
+                <div class="col p-1 white-box" id="g2"><img width="100%" src="{% static 'BOT/assets/images/white/pw.png' %}" id="wp7"/></div>
+                <div class="col p-1 black-box" id="h2"><img width="100%" src="{% static 'BOT/assets/images/white/pw.png' %}" id="wp8"/></div>
+
+                <div class="col p-1 "><img width="100%" src="{% static 'BOT/assets/images/letters/3.png' %}"/></div>
+                <div class="col p-1 black-box available" id="a3"> </div>
+                <div class="col p-1 white-box available" id="b3"> </div>
+                <div class="col p-1 black-box available" id="c3"> </div>
+                <div class="col p-1 white-box available" id="d3"> </div>
+                <div class="col p-1 black-box available" id="e3"> </div>
+                <div class="col p-1 white-box available" id="f3"> </div>
+                <div class="col p-1 black-box available" id="g3"> </div>
+                <div class="col p-1 white-box available" id="h3"> </div>
+
+                <div class="col p-1 "><img width="100%" src="{% static 'BOT/assets/images/letters/4.png' %}"/></div>
+                <div class="col p-1 white-box available" id="a4"> </div>
+                <div class="col p-1 black-box available" id="b4"> </div>
+                <div class="col p-1 white-box available" id="c4"> </div>
+                <div class="col p-1 black-box available" id="d4"> </div>
+                <div class="col p-1 white-box available" id="e4"> </div>
+                <div class="col p-1 black-box available" id="f4"> </div>
+                <div class="col p-1 white-box available" id="g4"> </div>
+                <div class="col p-1 black-box available" id="h4"> </div>
+
+                <div class="col p-1 "><img width="100%" src="{% static 'BOT/assets/images/letters/5.png' %}"/></div>
+                <div class="col p-1 black-box available" id="a5"> </div>
+                <div class="col p-1 white-box available" id="b5"> </div>
+                <div class="col p-1 black-box available" id="c5"> </div>
+                <div class="col p-1 white-box available" id="d5"> </div>
+                <div class="col p-1 black-box available" id="e5"> </div>
+                <div class="col p-1 white-box available" id="f5"> </div>
+                <div class="col p-1 black-box available" id="g5"> </div>
+                <div class="col p-1 white-box available" id="h5"> </div>
+
+                <div class="col p-1 "><img width="100%" src="{% static 'BOT/assets/images/letters/6.png' %}"/></div>
+                <div class="col p-1 white-box available" id="a6"> </div>
+                <div class="col p-1 black-box available" id="b6"> </div>
+                <div class="col p-1 white-box available" id="c6"> </div>
+                <div class="col p-1 black-box available" id="d6"> </div>
+                <div class="col p-1 white-box available" id="e6"> </div>
+                <div class="col p-1 black-box available" id="f6"> </div>
+                <div class="col p-1 white-box available" id="g6"> </div>
+                <div class="col p-1 black-box available" id="h6"> </div>
+
+                <div class="col p-1 "><img width="100%" src="{% static 'BOT/assets/images/letters/7.png' %}"/></div>
+                <div class="col p-1 black-box" id="a7"><img width="100%" src="{% static 'BOT/assets/images/brown/pb.png' %}" id="bp1" class="clickable"/></div>
+                <div class="col p-1 white-box" id="b7"><img width="100%" src="{% static 'BOT/assets/images/brown/pb.png' %}" id="bp2" class="clickable"/></div>
+                <div class="col p-1 black-box" id="c7"><img width="100%" src="{% static 'BOT/assets/images/brown/pb.png' %}" id="bp3" class="clickable"/></div>
+                <div class="col p-1 white-box" id="d7"><img width="100%" src="{% static 'BOT/assets/images/brown/pb.png' %}" id="bp4" class="clickable"/></div>
+                <div class="col p-1 black-box" id="e7"><img width="100%" src="{% static 'BOT/assets/images/brown/pb.png' %}" id="bp5" class="clickable"/></div>
+                <div class="col p-1 white-box" id="f7"><img width="100%" src="{% static 'BOT/assets/images/brown/pb.png' %}" id="bp6" class="clickable"/></div>
+                <div class="col p-1 black-box" id="g7"><img width="100%" src="{% static 'BOT/assets/images/brown/pb.png' %}" id="bp7" class="clickable"/></div>
+                <div class="col p-1 white-box" id="h7"><img width="100%" src="{% static 'BOT/assets/images/brown/pb.png' %}" id="bp8" class="clickable"/></div>
+
+                <div class="col p-1 "><img width="100%" src="{% static 'BOT/assets/images/letters/8.png' %}"/></div>
+                <div class="col p-1 white-box " id="a8"><img width="100%" src="{% static 'BOT/assets/images/brown/rb-1.png' %}" id="br1" class="clickable"/></div>
+                <div class="col p-1 black-box" id="b8"><img width="100%" src="{% static 'BOT/assets/images/brown/hb-1.png' %}" id="bh1" class="clickable"/></div>
+                <div class="col p-1 white-box" id="c8"><img width="100%" src="{% static 'BOT/assets/images/brown/bb-1.png' %}" id="bb1" class="clickable"/></div>
+                <div class="col p-1 black-box" id="d8"><img width="100%" src="{% static 'BOT/assets/images/brown/qb.png' %}" id="bq" class="clickable"/></div>
+                <div class="col p-1 white-box" id="e8"><img width="100%" src="{% static 'BOT/assets/images/brown/kb.png' %}" id="bk" class="clickable"/></div>
+                <div class="col p-1 black-box" id="f8"><img width="100%" src="{% static 'BOT/assets/images/brown/bb-2.png' %}" id="bb2" class="clickable"/></div>
+                <div class="col p-1 white-box" id="g8"><img width="100%" src="{% static 'BOT/assets/images/brown/hb-2.png' %}" id="bh2" class="clickable"/></div>
+                <div class="col p-1 black-box" id="h8"><img width="100%" src="{% static 'BOT/assets/images/brown/rb-2.png' %}" id="br2" class="clickable"/></div>
+
+                <div></div>
+                <div class="col p-1 "><img width="100%" src="{% static 'BOT/assets/images/letters/a.png' %}"/></div>
+                <div class="col p-1 "><img width="100%" src="{% static 'BOT/assets/images/letters/b.png' %}"/></div>
+                <div class="col p-1 "><img width="100%" src="{% static 'BOT/assets/images/letters/c.png' %}"/></div>
+                <div class="col p-1 "><img width="100%" src="{% static 'BOT/assets/images/letters/d.png' %}"/></div>
+                <div class="col p-1 "><img width="100%" src="{% static 'BOT/assets/images/letters/e.png' %}"/></div>
+                <div class="col p-1 "><img width="100%" src="{% static 'BOT/assets/images/letters/f.png' %}"/></div>
+                <div class="col p-1 "><img width="100%" src="{% static 'BOT/assets/images/letters/g.png' %}"/></div>
+                <div class="col p-1 "><img width="100%" src="{% static 'BOT/assets/images/letters/h.png' %}"/></div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</body>
+
+<script src="{% static 'BOT/board.js' %}"></script>
+<script>
+
+    let $coin = "";
+    let $box = "";
+
+    function bot_move() {
+    $.ajax({
+        type: 'GET',
+        url: "{% url 'BOT:bot' %}",
+        data: {'a': 1},
+        success: function (data) {
+             $("#"+data["coin"]).parent().addClass("from available");
+             $("#"+data["to"]).addClass("to").removeClass("available");
+             //this gets called when server returns an OK response
+             $("#"+data["coin"]).detach().appendTo($("#"+data["to"]));
+        },
+        error: function (data) {
+             alert("it didnt work");
+        }
+    });
+}
+{#$(":not(.clickable)").click(function () {#}
+{#        $(".selected").removeClass("selected");#}
+{#        $(".can_move").removeClass("can_move");#}
+{#        $(".can_kill").removeClass("can_kill");#}
+{#    })#}
+
+
+$(".clickable").on("click", function(event){
+
+    event.stopPropagation();
+    event.stopImmediatePropagation();
+
+    $(this).parent().siblings().removeClass("selected can_move from to can_kill");
+    $coin = $(this).attr('id');
+    $box = $(this).parent().attr('id');
+
+    $("#"+$box).addClass("selected");
+    if($coin.includes("bp")){
+      if($box.includes("7")){
+
+        if($("#"+$box.charAt(0)+($box.charAt(1)-1)).hasClass("available")) {
+            $("#" + $box.charAt(0) + ($box.charAt(1) - 1)).addClass("can_move");
+            $("#" + $box.charAt(0) + ($box.charAt(1) - 2)).addClass("can_move");
+            player_move($coin);
+        }
+
+        if(!($("#"+String.fromCharCode($box.charCodeAt(0)+1)+($box.charAt(1)-1)).hasClass("available"))) {
+            $("#" + String.fromCharCode($box.charCodeAt(0) + 1) + ($box.charAt(1) - 1)).addClass("can_kill");
+            player_kill($coin);
+        }
+        if(String.fromCharCode($box.charCodeAt(0)-1)!="`" && !($("#"+String.fromCharCode($box.charCodeAt(0)-1)+($box.charAt(1)-1)).hasClass("available"))) {
+            $("#" + String.fromCharCode($box.charCodeAt(0) - 1) + ($box.charAt(1) - 1)).addClass("can_kill");
+            player_kill($coin);
+        }
+
+      }else{
+
+        if($("#"+$box.charAt(0)+($box.charAt(1)-1)).hasClass("available")) {
+            $("#" + $box.charAt(0) + ($box.charAt(1) - 1)).addClass("can_move");
+            player_move($coin);
+        }
+
+        if(!($("#"+String.fromCharCode($box.charCodeAt(0)+1)+($box.charAt(1)-1)).hasClass("available"))) {
+            $("#" + String.fromCharCode($box.charCodeAt(0) + 1) + ($box.charAt(1) - 1)).addClass("can_kill");
+            player_kill($coin);
+        }
+        if(String.fromCharCode($box.charCodeAt(0)-1)!="`" && !($("#"+String.fromCharCode($box.charCodeAt(0)-1)+($box.charAt(1)-1)).hasClass("available"))) {
+            $("#" + String.fromCharCode($box.charCodeAt(0) - 1) + ($box.charAt(1) - 1)).addClass("can_kill");
+            player_kill($coin);
+        }
+
+      }
+  }
+});
+
+function player_move($coin) {
+    $(".can_move").on("click", function (event) {
+
+        event.stopPropagation();
+        event.stopImmediatePropagation();
+
+        if($(this).hasClass('can_move')) {
+            $("#" + $coin).parent().removeClass("selected");
+            $("#" + $coin).parent().addClass("from available");
+            $(".can_move").removeClass("can_move available");
+            $(this).addClass("to");
+            $("#" + $coin).detach().appendTo(this);
+
+            if ($("#" + String.fromCharCode($(this).attr('id').charCodeAt(0) + 1) + ($(this).attr('id').charAt(1) - 1)).children().attr('id') == "wk")
+                $("#" + String.fromCharCode($(this).attr('id').charCodeAt(0) + 1) + ($(this).attr('id').charAt(1) - 1)).addClass("check");
+
+            setTimeout(function () { //backend part
+                bot_move()
+            }, 1000);
+        }
+    });
+}
+
+function player_kill($coin) {
+    $(".can_kill").on("click", function (event) {
+
+        event.stopPropagation();
+        event.stopImmediatePropagation();
+        if($(this).hasClass('can_kill')){
+            $("#" + $coin).parent().removeClass("selected");
+            $("#" + $coin).parent().addClass("from available");
+            $(".can_kill").removeClass("can_kill available");
+            $(this).addClass("to");
+            $("#" + $(this).children().attr('id')).detach();
+            $("#" + $coin).detach().appendTo(this);
+
+            if ($("#" + String.fromCharCode($(this).attr('id').charCodeAt(0) + 1) + ($(this).attr('id').charAt(1) - 1)).children().attr('id') == "wk")
+                $("#" + String.fromCharCode($(this).attr('id').charCodeAt(0) + 1) + ($(this).attr('id').charAt(1) - 1)).addClass("check");
+        }
+    });
+}
+</script>
+</html>
